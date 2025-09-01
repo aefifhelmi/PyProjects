@@ -1,0 +1,86 @@
+class Rental:
+    def __init__(self,list,name):
+        self._carlist = list #list to store different type of cars!
+        self._name = name #name
+        self._lendDict = {} #A dictionary to store the data system of customer's rental
+
+    def Displaycars(self):
+        print(f"List of car that available for rent are here: ")
+        for car in self._carlist:
+            print(car)
+
+    def Lendcars(self,user,car):
+        if car in self._lendDict.keys():
+             print(f"We're sorry, Car is already being used by {self._lendDict[car]}") #keys() are used to retrive all of the keys from dictionaries
+        else:
+            self._lendDict.update({car: user})
+
+            print("Lender-car is updated in our system. You can take your car with you!")
+            #Always alert that the cars are stored in a list!
+
+    def Addcar(self, car):
+        if car not in self._carlist:
+            self._carlist.append(car) #Adding a new car by using simple appending method!
+        else:
+            pass
+
+    def Returncar(self,car):
+        self._lendDict.pop(car) #pop() is used to delete the data that originally stored from the dictionaries
+        print(f"Your car has been returned!, Thankyou for visiting us {user_name}")
+
+
+def Options():
+    print("1. Display Car")
+    print("2. Lend a Car")
+    print("3. Add a Car")
+    print("4. Return a Car")
+    print("5. Exit")
+
+
+if __name__ == "__main__":
+    rental = Rental(["Myvi", "Bezza", "Axia", "Saga"], "Aiesyah CarRental Store") #insert your own car rental shop name and all types of cars that available on the Rental class!
+   
+    while (True): #Using nested while loop so a new user can iterate with a new system while the data is still being save and stored!
+          print(" ")
+          user_name = input("Enter Your name: ")
+          print(" ")
+          while (True):
+              print(" ")
+              print(f"Welcome to the {rental._name} management system, How can we serve you {user_name}? " )
+              print(" ")
+              Options()
+              print(" ")
+              user_choice = int(input("Enter your choice[1-5]: "))
+              if user_choice not in [1,2,3,4,5]:
+                print("Not a valid choice, please choose again!")
+                break
+              else:
+                user_choice = user_choice
+
+              if user_choice == 1:
+                print(" ")
+                rental.Displaycars()
+
+              elif user_choice == 2:
+                 print(f"Car List {rental._carlist}")
+                 user = user_name
+                 print(" ")
+                 car = input("Enter the name of car that you want: ")
+                 print(" ")
+                 rental.Lendcars(user, car)
+            
+              elif user_choice == 3:
+                 car = input("Enter the car name: ")
+                 rental.Addcar(car)
+                 print(" ")
+                 print('The car has been added!')
+
+              elif user_choice == 4:
+                  car = input("Enter your rental car name to return the car: ")
+                  print(" ")
+                  rental.Returncar(car)
+
+              else:
+                print(" ")
+                print(f"Thank you for visiting {rental._name} management system!, Please Come Again {user_name} ! ")
+                break
