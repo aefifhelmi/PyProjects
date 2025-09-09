@@ -1,4 +1,4 @@
-# RefurbishedV2
+# PyProjects
 
 This repository contains a collection of basic Python programming projects.  
 It includes simple games, algorithms, and small applications created for learning and practice.
